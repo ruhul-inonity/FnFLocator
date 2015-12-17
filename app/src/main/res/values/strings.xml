@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FnFLocator</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_manage_circles">ManageCirclesActivity</string>
+    <string name="title_activity_to_do_list">ToDoListActivity</string>
+    <string name="title_activity_home_maps">Map</string>
+</resources>
