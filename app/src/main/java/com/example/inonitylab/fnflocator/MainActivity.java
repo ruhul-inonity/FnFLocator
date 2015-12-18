@@ -1,5 +1,6 @@
 package com.example.inonitylab.fnflocator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,15 +10,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -93,17 +95,29 @@ public class MainActivity extends FragmentActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_manage_circles) {
+            Intent intent = new Intent(MainActivity.this,ManageCirclesActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_places) {
+            Intent intent = new Intent(MainActivity.this,PlacesActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_reminder) {
+            Intent intent = new Intent(MainActivity.this,ReminderActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_todo) {
+            Intent intent = new Intent(MainActivity.this,ToDoListActivity.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_send) {
+
+        }else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -116,9 +130,22 @@ public class MainActivity extends FragmentActivity
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        double latitude = 23.7442579;
+        double longitude = 90.3729888;
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng uiu = new LatLng(latitude,longitude);
+        mMap.addMarker(new MarkerOptions().position(uiu).title("United International University"));
+        //mMap.addCircle()
+
+        //set camera position
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(
+                new LatLng(latitude, longitude)).zoom(16).build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        mMap.setMyLocationEnabled(true);
+        //mMap.getMyLocation();
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        //mMap.getUiSettings().setZoomGesturesEnabled(true);
+       // mMap.moveCamera(CameraUpdateFactory.newLatLng(uiu));
     }
 }
