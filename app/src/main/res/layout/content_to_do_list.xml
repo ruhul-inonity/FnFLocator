@@ -12,4 +12,18 @@
     tools:context="com.example.inonitylab.fnflocator.ToDoListActivity"
     tools:showIn="@layout/activity_to_do_list">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Under Construction"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="129dp" />
 </RelativeLayout>
